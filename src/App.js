@@ -1,7 +1,11 @@
+import Hover from "./components/Hover";
+import Input from "./components/Input";
+
 function App() {
   return (
     <div>
-      Сайт поднят
+      <Input/>
+      <Hover/>
     </div>
   );
 }
