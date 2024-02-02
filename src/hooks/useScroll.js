@@ -1,6 +1,10 @@
+/* Hook прикручивает observer к сайту. При появлении в поле видимости элемента
+ * вызывается callback.
+ */
+
 import { useEffect, useRef } from "react";
 
-function useScroll(targetRef, callback, dependencies) {
+function useScroll(targetRef, callback) {
   const observer = useRef();
   
   useEffect(() => {
@@ -21,7 +25,7 @@ function useScroll(targetRef, callback, dependencies) {
     return function () {
       observer.current.unobserve(targetRef.current); // Отписываемся за слежкой
     }
-  }, dependencies);
+  }, callback);
 }
 
 export default useScroll;

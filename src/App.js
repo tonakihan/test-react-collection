@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Hover from "./components/Hover";
 import Input from "./components/Input";
 import List from "./components/List";
