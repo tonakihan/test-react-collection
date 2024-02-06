@@ -1,7 +1,14 @@
+import React from "react";
+import Wallet from "./components/Wallet";
+import Customer from "./components/Customer";
+import Counter from "./components/Counter";
+
 function App() {
   return (
     <div>
-      Сайт поднят
+      <Wallet/>
+      <Customer/>
+      <Counter/>
     </div>
   );
 }
