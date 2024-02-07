@@ -2,21 +2,24 @@ const defaultState = {
   customers: []
 }
 
-const customerReducer = (state = defaultState, action) => {
-  function remove(val) {
-    const index = state.customers.indexOf(val);
-    const res = state.customers.splice(index, 1);
-    return res;
-  }
+const ADD_CUSTOMER = 'ADD_CUSTOMER';
+const REMOVE_CUSTOMER = 'REMOVE_CUSTOMER';
 
+const customerReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case 'ADD_CUSTOMER':
+    case ADD_CUSTOMER:
       return {...state, customers: [...state.customers, action.payload]}
-    case 'PUT_CUSTOMER':
-      return {...state, customers: remove(action.payload)}
+    case REMOVE_CUSTOMER:
+      return {...state, customers: state.customers.filter(customer => customer.name !== action.payload)}
     default: 
       return state;
   }
 }
 
+export function addCustomerAction(payload) {
+  return({type: ADD_CUSTOMER, payload})
+}
+export function delCustomerAction(payload) {
+  return({type: REMOVE_CUSTOMER, payload})
+} 
 export default customerReducer;
