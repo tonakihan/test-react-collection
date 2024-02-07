@@ -1,6 +1,6 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit'
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import cashReducer from './cashReducer';
-import customerReducer from './customerReducer'
+import customerReducer from './customerReducer';
 import counterSlice from './counterSlice';
 
 const rootReducer = combineReducers({

@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addCustomerAction, delCustomerAction } from "../store/customerReducer";
+import { fetchCustomers } from "../asyncAction/customers";
 
 function Customer() {
   const userInput = useRef();
@@ -24,7 +25,7 @@ function Customer() {
         ? <div>
             <h1>Customers</h1>
             {customers.map(customer => (
-              <h4>{customer.name}</h4>
+              <div>{customer.name}</div>
             ))}
           </div>
         : <h1> Нету ни одного элемента</h1>
@@ -32,6 +33,7 @@ function Customer() {
       <input ref={userInput} placeholder="Тут нужно имя"></input>
       <button onClick={() => add(userInput.current.value)}>Add</button>
       <button onClick={() => del(userInput.current.value)}>Del</button>
+      <button onClick={() => dispath(fetchCustomers())}>Get from server</button>
     </div>
   )
 }
