@@ -1,5 +1,6 @@
 import React, {useRef} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { ADD_CASH, GET_CASH } from '../store/cashReducer';
 
 function Wallet() {
   const userInput = useRef();
@@ -9,11 +10,11 @@ function Wallet() {
   function getCash() {
     // dispath принимает action 
     let value = Number(userInput.current.value); 
-    dispath({type: "GET_CASH", payload: value});
+    dispath({...GET_CASH, payload: value});
   }
   function addCash() {
     let value = Number(userInput.current.value); 
-    dispath({type: "ADD_CASH", payload: value});
+    dispath({...ADD_CASH, payload: value});
   }
 
   return (

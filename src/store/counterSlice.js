@@ -8,18 +8,26 @@ export const counterSlice = createSlice({
   },
 
   reducers: {
-    increment: (state) => {
+    increment(state) {
       state.value += 1
     },
-    decrement: (state) => {
+    decrement(state) {
       state.value -= 1
     },
-    incrementByAmount: (state, action) => {
+    incrementByAmount(state, action) {
       state.value += action.payload
     },
+    // Заглушки для saga
+    asyncIncrement() {}, 
+    asyncDecrement() {},
   },
 })
 
-export const {increment, decrement, incrementByAmount} = counterSlice.actions
-
-export default counterSlice.reducer
+export const {
+  increment, 
+  decrement, 
+  incrementByAmount, 
+  asyncIncrement, 
+  asyncDecrement
+} = counterSlice.actions;
+export default counterSlice.reducer;

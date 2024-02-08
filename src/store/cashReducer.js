@@ -1,17 +1,26 @@
+import {createReducer, createAction} from '@reduxjs/toolkit'
+
 const defaultState = {
   cash: 0
 }
 
-// Вот этот управляет значением в state
-const cashReducer = (state = defaultState, action) => {
-  switch (action.type) {
-    case 'ADD_CASH':
-      return {...state, cash: state.cash + action.payload}
-    case 'GET_CASH':
-      return {...state, cash: state.cash - action.payload}
-    default: 
-      return state;
-  }
-}
+const ADD_CASH = createAction('ADD_CASH');
+const GET_CASH = createAction('GET_CASH');
 
+/* Главное отличие createReducer - данные являются mutable,
+ * это значит, что их можно напрямую менять. Тоже самое есть в
+ * createSlice.
+ */ 
+const cashReducer = createReducer(defaultState, (builder) => {
+  builder
+    .addCase(ADD_CASH, (state, action) => {
+      state.cash += action.payload;
+    })
+    .addCase(GET_CASH, (state, action) => {
+      state.cash -= action.payload;
+    })
+    .addDefaultCase((state, action) => {});
+});
+
+export {ADD_CASH, GET_CASH};
 export default cashReducer;
