@@ -1,5 +1,5 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import type { RootState, AppDispatch } from './index';
+import type { RootState, AppDispatch } from './types';
 
 /* Создали свои версии hooks для избавления от проблем:
  * useSelector - не прописывать тип принемаемного значения;
