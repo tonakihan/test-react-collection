@@ -21,7 +21,7 @@ const initialState: TextState = {
 };
 
 //TODO: непонятно, погуглить
-export const fetchText = createAsyncThunk<string, string, {rejectValue: string}>(
+const fetchText = createAsyncThunk<string, string, {rejectValue: string}>(
   'textSlice/fetchText',
   async function(sentences: string, {rejectWithValue}) {
     try {
@@ -33,7 +33,7 @@ export const fetchText = createAsyncThunk<string, string, {rejectValue: string}>
       return rejectWithValue( (e as Error).message );
     }
   }
-  ) 
+); 
 
 const textSlice = createSlice({
   name: 'textSlice',
@@ -78,6 +78,7 @@ const textSlice = createSlice({
   },
 });
 
+export { fetchText };
 export const { 
   setText, 
   setCurrentCharIndex,  
